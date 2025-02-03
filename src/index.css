@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  max-width: 1280px;
+}
+
+html{
+    background-color: #232c33;
+}
