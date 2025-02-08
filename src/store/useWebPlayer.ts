@@ -47,10 +47,24 @@ const usePlayerStore = create<PlayState>((set, get) => ({
         }
         set({ isPlaying: false, currentTime: 0 });
     },
-    nextTrack: () => {
-        const { currentTrackIndex, tracks } = get();
+    nextTrack: async () => {
+        const { currentTrackIndex, tracks, audioElement } = get();
+        if (tracks.length === 0) return;
+
+        await new Promise(resolve => setTimeout(resolve, 100));
+
         const newIndex = (currentTrackIndex + 1) % tracks.length;
-        set({ currentTrackIndex: newIndex, isPlaying: true });
+
+        if(audioElement){
+          audioElement.pause();
+          audioElement.src = tracks[newIndex].audio.url;
+          audioElement.load();
+          audioElement.play().catch((error) => {
+            console.error('Error al reproducir el audio:', error);
+          });
+        }
+
+        set({ currentTrackIndex: newIndex, isPlaying: true, currentTime: 0 });
       },
       previousTrack: () => {
         const { currentTrackIndex, tracks } = get();

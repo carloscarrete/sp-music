@@ -87,6 +87,7 @@ export const WebPlayerPage = () => {
         }} 
         onNextTrack={nextTrack}
         onPreviousTrack={previousTrack}
+        tracks={tracks}
         />
     </div>
   );

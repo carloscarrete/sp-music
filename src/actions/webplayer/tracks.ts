@@ -8,7 +8,6 @@ export const getTracks = async () : Promise<Tracks[]> => {
     try {
         const { data } = await webPlayerApi.get<TrackResponse>('/tracks');
         const tracks = data.data.map((track)=> TrackMapper.trackMapper(track));
-        console.log(data.data[0]);
         return tracks;
     } catch (error) {
         console.log(error);

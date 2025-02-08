@@ -1,6 +1,7 @@
 import { Heart, Shuffle, SkipBack, Play, SkipForward, Repeat, Volume, Pause } from "lucide-react"
 import { CurrentSong } from "./CurrentSong"
 import { VolumeAudio } from "./VolumeAudio"
+import { Tracks } from "../../entities/domain/tracks";
 
 interface Props {
     isPlaying: boolean;
@@ -10,9 +11,10 @@ interface Props {
     onSeek: (time: number) => void;
     onNextTrack: () => void;
     onPreviousTrack: () => void;
+    tracks: Tracks[]
 }
 
-export const Player = ({ isPlaying, togglePlayPause, currentTime, duration, onSeek, onNextTrack, onPreviousTrack }: Props) => {
+export const Player = ({ isPlaying, togglePlayPause, currentTime, duration, onSeek, onNextTrack, onPreviousTrack, tracks }: Props) => {
     const formatTime = (time: number) => {
         const minutes = Math.floor(time / 60);
         const seconds = Math.floor(time % 60);
@@ -26,9 +28,11 @@ export const Player = ({ isPlaying, togglePlayPause, currentTime, duration, onSe
             <div className="flex gap-2 flex-1 items-center flex-col">
                 <div className="flex items-center gap-6">
                     <Shuffle size={24} className="cursor-pointer text-zinc-400 hover:text-white" />
-                    <button onClick={onPreviousTrack}>
-                        <SkipBack size={24} className="cursor-pointer text-zinc-400 hover:text-white" />
-                    </button>
+                    <button
+                        onClick={onPreviousTrack}
+                        disabled={tracks.length === 0}
+                    >
+                        <SkipBack size={24} className={`cursor-pointer ${tracks.length === 0 ? 'text-zinc-600' : 'text-zinc-400 hover:text-white'}`} />                    </button>
                     <button className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-black hover:scale-105">
                         {isPlaying ? (
                             <Pause onClick={togglePlayPause} size={24} />
