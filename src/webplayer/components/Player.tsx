@@ -2,7 +2,12 @@ import { Heart, Shuffle, SkipBack, Play, SkipForward, Repeat, Volume } from "luc
 import { CurrentSong } from "./CurrentSong"
 import { VolumeAudio } from "./VolumeAudio"
 
-export const Player = () => {
+interface Props{
+    isPlaying: boolean,
+    togglePlayPause: () => void
+}
+
+export const Player = ({isPlaying, togglePlayPause}: Props) => {
     return (
         <div className="bg-black h-14  border-t border-zinc-800 px-4 flex items-center">
             <CurrentSong />
@@ -12,7 +17,7 @@ export const Player = () => {
                     <Shuffle size={24} className="cursor-pointer text-zinc-400 hover:text-white" />
                     <SkipBack size={24} className="cursor-pointer text-zinc-400 hover:text-white" />
                     <button className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-black hover:scale-105">
-                        <Play size={24} />
+                        <Play onClick={togglePlayPause} size={24} />
                     </button>
                     <SkipForward size={24} className="cursor-pointer text-zinc-400 hover:text-white" />
                     <Repeat size={24} className="cursor-pointer text-zinc-400 hover:text-white" />
