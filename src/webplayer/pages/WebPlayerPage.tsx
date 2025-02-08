@@ -1,6 +1,9 @@
 import { ArrowRight, Heart, Home, Library, Play, Repeat, Search, Shuffle, SkipBack, SkipForward, Volume } from "lucide-react";
+import { useEffect } from "react";
+import webPlayerApi from "../../api/webPlayerApi";
 
 export const WebPlayerPage = () => {
+
   return (
     <div className="flex h-screen text-white flex-col bg-black">
       <div className="flex flex-1 overflow-hidden">
