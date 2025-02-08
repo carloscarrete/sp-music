@@ -8,17 +8,21 @@ interface PlayState {
     currentTrackIndex: number;
     tracks: Tracks[];
     audioElement: HTMLAudioElement | null;
+    duration: number;
     togglePlayPause: () => void;
     stop: () => void;
     nextTrack: () => void;
     previousTrack: () => void;
     setVolume: (volume: number) => void;
     setAudioElement: (element: HTMLAudioElement) => void;
+    setDuration: (duration: number) => void;
+    setCurrentTime: (currentTime: number) => void;
 }
 
 const usePlayerStore = create<PlayState>((set, get) => ({
     isPlaying: false,
     volume: 1,
+    duration: 0,
     currentTime: 0,
     currentTrackIndex: 0,
     audioElement: null,
@@ -69,6 +73,14 @@ const usePlayerStore = create<PlayState>((set, get) => ({
       
       setAudioElement: (element: HTMLAudioElement) => {
         set({ audioElement: element });
+      },
+
+      setCurrentTime: (time: number) => {
+          set({ currentTime: time });
+      },
+
+      setDuration: (duration: number) => {
+        set({ duration });
       }
 }))
 
