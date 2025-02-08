@@ -4,6 +4,7 @@ import { Player } from "../components/Player";
 import { useEffect, useRef } from "react";
 import { getTracks } from "../../actions/webplayer/tracks";
 import usePlayerStore from "../../store/useWebPlayer";
+import { useQuery } from "@tanstack/react-query";
 
 export const WebPlayerPage = () => {
 
@@ -11,17 +12,29 @@ export const WebPlayerPage = () => {
     isPlaying,
     currentTrackIndex,
     currentTime,
-    tracks,
     togglePlayPause,
     nextTrack,
     previousTrack,
     setAudioElement,
     setDuration,
     setCurrentTime,
-    duration
+    duration,
+    setTracks,
+    tracks
   } = usePlayerStore();
 
   const audioRef = useRef<HTMLAudioElement>(null);
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['tracks'],
+    queryFn: getTracks
+  });
+
+  useEffect(() => {
+    if(data) setTracks(data)
+  }, [data, setTracks])
+  
+
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -56,7 +69,7 @@ export const WebPlayerPage = () => {
       </div>
       <audio
         ref={audioRef}
-        src={tracks[currentTrackIndex].url}
+        src={tracks[currentTrackIndex]?.audio?.url || ""}
         onEnded={nextTrack}
         onTimeUpdate={() => setCurrentTime(audioRef.current?.currentTime || 0)}
         onLoadedMetadata={() => setDuration(audioRef.current?.duration || 0)}
@@ -71,7 +84,10 @@ export const WebPlayerPage = () => {
             audioRef.current.currentTime = time;
             setCurrentTime(time);
           }
-        }} />
+        }} 
+        onNextTrack={nextTrack}
+        onPreviousTrack={previousTrack}
+        />
     </div>
   );
 };

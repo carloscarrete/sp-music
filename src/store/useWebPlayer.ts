@@ -17,6 +17,7 @@ interface PlayState {
     setAudioElement: (element: HTMLAudioElement) => void;
     setDuration: (duration: number) => void;
     setCurrentTime: (currentTime: number) => void;
+    setTracks: (tracks: Tracks[]) => void;
 }
 
 const usePlayerStore = create<PlayState>((set, get) => ({
@@ -26,14 +27,7 @@ const usePlayerStore = create<PlayState>((set, get) => ({
     currentTime: 0,
     currentTrackIndex: 0,
     audioElement: null,
-    tracks: [
-        {
-            _id: '67a6e8f98e6622283bb6c917',
-            url: 'http://localhost:3200/1738991864886-Hoobastank%20-%20The%20Reason%20%20(Audio)%20[2kB3JxcZUUM].mp3',
-            filename: '1738991864886-Hoobastank - The Reason  (Audio) [2kB3JxcZUUM].mp3'
-        
-        }
-    ],
+    tracks: [],
     togglePlayPause: () => {
         const {audioElement, isPlaying} = get();
         if(!audioElement) return;
@@ -81,6 +75,10 @@ const usePlayerStore = create<PlayState>((set, get) => ({
 
       setDuration: (duration: number) => {
         set({ duration });
+      },
+
+      setTracks: (tracks: Tracks[]) => {
+        set({tracks})
       }
 }))
 

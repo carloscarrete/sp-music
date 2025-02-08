@@ -1,15 +1,15 @@
 import webPlayerApi from "../../api/webPlayerApi";
+import { Tracks } from "../../entities/domain/tracks";
 import { TrackResponse } from "../../interfaces/tracks.interface";
 import { TrackMapper } from "../../mappers/tracks.mapper";
 
 
-export const getTracks = async () => {
+export const getTracks = async () : Promise<Tracks[]> => {
     try {
-        const { data } = await webPlayerApi.get<TrackResponse>('/storage');
-        //console.log(data.data)
+        const { data } = await webPlayerApi.get<TrackResponse>('/tracks');
         const tracks = data.data.map((track)=> TrackMapper.trackMapper(track));
-        console.log(tracks)
-        //console.log(tracks);
+        console.log(data.data[0]);
+        return tracks;
     } catch (error) {
         console.log(error);
         throw new Error("Algo salió mal");
