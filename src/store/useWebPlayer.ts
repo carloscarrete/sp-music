@@ -18,6 +18,7 @@ interface PlayState {
   setDuration: (duration: number) => void;
   setCurrentTime: (currentTime: number) => void;
   setTracks: (tracks: Tracks[]) => void;
+  setCurrentTrackIndex: (index: number) => void
 }
 
 const usePlayerStore = create<PlayState>((set, get) => ({
@@ -120,6 +121,27 @@ const usePlayerStore = create<PlayState>((set, get) => ({
 
   setTracks: (tracks: Tracks[]) => {
     set({ tracks })
+  },
+
+  setCurrentTrackIndex: async (index:number) => {
+    const {audioElement, tracks} = get();
+
+    if(audioElement){
+      try{
+        audioElement.pause();
+        set({currentTrackIndex: index, currentTime:0})
+        audioElement.src =  tracks[index].audio.url,
+
+        await new Promise((resolve, reject)=>{
+          audioElement.oncanplay = resolve;
+          audioElement.load();
+        })
+        audioElement.play();
+        set({isPlaying: true});
+      }catch(error){
+        console.log(error);
+      }
+    }
   }
 }))
 
