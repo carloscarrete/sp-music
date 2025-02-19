@@ -4,6 +4,7 @@ import { RegisterPage } from "../auth/pages/RegisterPage"
 import { useAuthStore } from "../store/useAuthStore"
 import { useEffect } from "react"
 import ClipLoader from "react-spinners/ClipLoader";
+import { LoginPage } from "../auth/pages/LoginPage"
 
 
 export const AppRouter = () => {
@@ -29,7 +30,7 @@ export const AppRouter = () => {
           loading={true}
           size={150}
           cssOverride={{
-            borderColor: "purple", 
+            borderColor: "purple",
           }}
         />
       </div>
@@ -50,7 +51,9 @@ export const AppRouter = () => {
           (
             <>
               <Route path="/auth/register" element={<RegisterPage />} />
-              <Route path="/*" element={<Navigate to="/auth/register" />} />            </>
+              <Route path="/auth/login" element={<LoginPage />} />
+              <Route path="/*" element={<Navigate to="/auth/register" />} />
+            </>
           )
       }
     </Routes>
