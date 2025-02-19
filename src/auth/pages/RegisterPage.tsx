@@ -1,5 +1,6 @@
 import { Formik } from "formik";
 import { useAuthStore } from "../../store/useAuthStore";
+import { Link } from "react-router-dom";
 
 interface RegisterValues {
   fullName: string;
@@ -115,11 +116,11 @@ export const RegisterPage = () => {
             <div className="text-white text-center mt-3">
               <p>
                 ¿Ya tienes cuenta?
-                <a
-                  href="/register"
+                <Link
+                  to="/auth/login"
                   className="text-green-500 font-semibold ml-1 hover:underline">
                   Iniciar sesión
-                </a>
+                </Link>
               </p>
             </div>
           </div>
