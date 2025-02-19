@@ -64,7 +64,7 @@ export const WebPlayerPage = () => {
   return (
     <div className="flex h-screen text-white flex-col bg-black">
       <div className="flex flex-1 overflow-hidden">
-        <Sidebar />
+        <Sidebar tracks={tracks}/>
         <PlayerScreen tracks={tracks}/>
       </div>
       <audio

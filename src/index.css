@@ -9,3 +9,25 @@
 #root {
   @apply w-full min-h-screen; /* En lugar de max-width fijo */
 }
+
+@keyframes scroll {
+  0% {
+      transform: translateX(0);
+  }
+  100% {
+      transform: translateX(-100%);
+  }
+}
+
+.hover\:animate-scroll:hover {
+  animation: scroll 5s linear infinite;
+  white-space: nowrap;
+  display: inline-block;
+  padding-left: 100%; /* Esto asegura que el texto comience fuera del contenedor */
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
