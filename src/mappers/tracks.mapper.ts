@@ -10,7 +10,8 @@ export class TrackMapper {
             cover: track.cover,
             artist: track.artist,
             duration: track.duration,
-            audio: track.audio
+            audio: track.audio,
+            favorite: track.favorite
         }
     }
 }

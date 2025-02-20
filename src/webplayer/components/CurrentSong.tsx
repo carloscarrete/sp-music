@@ -3,9 +3,8 @@ import usePlayerStore from "../../store/useWebPlayer";
 
 export const CurrentSong = () => {
 
-    const { tracks, currentTrackIndex } = usePlayerStore();
+    const { tracks, currentTrackIndex, setFavoriteCurrentTrack } = usePlayerStore();
     const currentTrack = tracks[currentTrackIndex];
-
 
     return (
         <div className="flex gap-3 w-80 items-center">
@@ -14,6 +13,6 @@ export const CurrentSong = () => {
                 <p className="font-bold">{currentTrack?.name}</p>
                 <p className="text-sm text-zinc-400">{currentTrack?.artist.name}</p>
             </div>
-            <Heart size={24} fill="red" stroke="red" className="cursor-pointer text-white ml-3 hover:text-red-600" />
+            <Heart onClick={() => setFavoriteCurrentTrack(currentTrack?._id)} size={24} fill="red" stroke="red" className="cursor-pointer text-white ml-3 hover:text-red-600" />
         </div>)
 }

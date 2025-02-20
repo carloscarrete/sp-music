@@ -10,6 +10,7 @@ export interface Track {
     cover:     string;
     artist:    Artist;
     duration:  Duration;
+    favorite: boolean;
     mediaId:   string;
     deleted:   boolean;
     createdAt: Date;

@@ -20,7 +20,9 @@ export const WebPlayerPage = () => {
     setCurrentTime,
     duration,
     setTracks,
-    tracks
+    tracks,
+    favoritesTracks,
+    setFavoritesTracks
   } = usePlayerStore();
 
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -31,8 +33,10 @@ export const WebPlayerPage = () => {
   });
 
   useEffect(() => {
+    console.log('x')
     if(data) setTracks(data)
-  }, [data, setTracks])
+    if(data) setFavoritesTracks(data)
+  }, [data, setTracks, setFavoritesTracks])
   
 
 
@@ -64,7 +68,7 @@ export const WebPlayerPage = () => {
   return (
     <div className="flex h-screen text-white flex-col bg-black">
       <div className="flex flex-1 overflow-hidden">
-        <Sidebar tracks={tracks}/>
+        <Sidebar tracks={favoritesTracks}/>
         <PlayerScreen tracks={tracks}/>
       </div>
       <audio

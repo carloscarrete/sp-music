@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { Tracks } from "../entities/domain/tracks";
+import { setFavoriteTrack } from "../actions/webplayer/tracks";
 
 interface PlayState {
   isPlaying: boolean;
@@ -7,6 +8,7 @@ interface PlayState {
   currentTime: number;
   currentTrackIndex: number;
   tracks: Tracks[];
+  favoritesTracks: Tracks[];
   audioElement: HTMLAudioElement | null;
   duration: number;
   togglePlayPause: () => void;
@@ -18,7 +20,9 @@ interface PlayState {
   setDuration: (duration: number) => void;
   setCurrentTime: (currentTime: number) => void;
   setTracks: (tracks: Tracks[]) => void;
-  setCurrentTrackIndex: (index: number) => void
+  setFavoritesTracks: (tracks: Tracks[]) => void;
+  setCurrentTrackIndex: (index: number) => void;
+  setFavoriteCurrentTrack: (trackId: string) => void;
 }
 
 const usePlayerStore = create<PlayState>((set, get) => ({
@@ -29,6 +33,7 @@ const usePlayerStore = create<PlayState>((set, get) => ({
   currentTrackIndex: 0,
   audioElement: null,
   tracks: [],
+  favoritesTracks: [],
   togglePlayPause: () => {
     const { audioElement, isPlaying } = get();
     if (!audioElement) return;
@@ -142,7 +147,30 @@ const usePlayerStore = create<PlayState>((set, get) => ({
         console.log(error);
       }
     }
+  },
+  setFavoritesTracks: (tracks: Tracks[]) => {
+    set({ favoritesTracks: tracks.filter((track) => track.favorite) });
+  },
+  setFavoriteCurrentTrack: async (trackId: string) => {
+    try {
+      const { tracks } = get();
+      const res = await setFavoriteTrack(trackId);
+  
+      if (res.data.acknowledged && res.data.modifiedCount > 0) {
+        const updatedTracks = tracks.map(track =>
+          track._id === trackId ? { ...track, favorite: !track.favorite } : track
+        );
+  
+        set({
+          tracks: updatedTracks,
+          favoritesTracks: updatedTracks.filter(track => track.favorite)
+        });
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
+  
 }))
 
 export default usePlayerStore;

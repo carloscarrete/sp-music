@@ -7,6 +7,7 @@ export interface Tracks {
     cover: string;
     artist: Artist;
     duration: Duration;
+    favorite: boolean;
 
     audio: Audio;
 }
