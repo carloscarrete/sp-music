@@ -33,7 +33,6 @@ export const WebPlayerPage = () => {
   });
 
   useEffect(() => {
-    console.log('x')
     if(data) setTracks(data)
     if(data) setFavoritesTracks(data)
   }, [data, setTracks, setFavoritesTracks])
