@@ -21,7 +21,7 @@ interface PlayState {
   setCurrentTime: (currentTime: number) => void;
   setTracks: (tracks: Tracks[]) => void;
   setFavoritesTracks: (tracks: Tracks[]) => void;
-  setCurrentTrackIndex: (index: number) => void;
+  setCurrentTrackIndex: (trackId: string) => void;
   setFavoriteCurrentTrack: (trackId: string) => void;
 }
 
@@ -128,8 +128,12 @@ const usePlayerStore = create<PlayState>((set, get) => ({
     set({ tracks })
   },
 
-  setCurrentTrackIndex: async (index:number) => {
+  setCurrentTrackIndex: async (trackId:string) => {
     const {audioElement, tracks} = get();
+
+    const index = tracks.findIndex(track => track._id === trackId);
+  
+  if (index === -1) return;
 
     if(audioElement){
       try{

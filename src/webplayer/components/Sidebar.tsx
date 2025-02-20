@@ -38,7 +38,7 @@ export const Sidebar = ({ tracks }: Props) => {
                     {
                         tracks.map((track, index) => (
                             
-                            <div className="flex gap-2 mt-1 hover:bg-zinc-800 cursor-pointer" key={track._id} onClick={() => setCurrentTrackIndex(index)}>
+                            <div className="flex gap-2 mt-1 hover:bg-zinc-800 cursor-pointer" key={track._id} onClick={() => setCurrentTrackIndex(track._id)}>
                                 <img src={track.cover} alt="Cover" className="w-10 h-10 rounded-md" />
                                 <div className="overflow-hidden">
                                     <p className="font-bold truncate hover:animate-scroll">{track.name}</p>

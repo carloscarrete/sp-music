@@ -14,7 +14,7 @@ export const PlayerScreen = ({tracks}: Props) => {
             <div className="bg-zinc-900 flex h-screen rounded-xl p-4">
                 <div className="grid grid-cols-5 md:grid-cols-4 sm:grid-cols-2 lg:grid-cols-5 gap-6 auto-rows-min">
                     {tracks.map((track, index) => (
-                        <div key={track._id} className="relative group overflow-hidden" onClick={()=>setCurrentTrackIndex(index)}>
+                        <div key={track._id} className="relative group overflow-hidden" onClick={()=>setCurrentTrackIndex(track._id)}>
                             {/* Contenedor para la imagen con transición */}
                             <div className="transform transition-all duration-300 ease-in-out group-hover:scale-110">
                                 <img 
