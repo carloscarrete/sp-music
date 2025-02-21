@@ -15,7 +15,7 @@ export const Sidebar = ({ tracks }: Props) => {
         <aside className="w-72 bg-black p-2  flex flex-col gap-2">
             <SidebarNav />
 
-            <div className="bg-zinc-900 h-full rounded-xl p-4 flex-1">
+            <div className="bg-zinc-900 h-full rounded-xl p-4 flex-1 overflow-y-scroll no-scrollbar">
                 <div className="flex gap-2 items-center text-zinc-200">
                     <Library size={24} />
                     <span>Música</span>
