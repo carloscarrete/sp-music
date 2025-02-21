@@ -21,7 +21,6 @@ export const LoginPage = () => {
     const { login } = useAuthStore();
 
     const onLogin = async ( email: string, password: string) => {
-        console.log({ email, password })
         const res = await login(email, password);
         if (!res) {
             console.log('Error al iniciar sesión');

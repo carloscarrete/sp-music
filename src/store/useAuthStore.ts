@@ -8,8 +8,8 @@ export interface AuthState {
     token?: string;
     user?: User;
 
-    /*  
-     logout: () => Promise<void>; */
+     
+     logout: () => Promise<void>;
     register: (fullName: string, email: string, password: string) => Promise<boolean>;
     login: (email: string, password: string) => Promise<boolean>;
     refreshToken: () => Promise<boolean>;
@@ -57,6 +57,14 @@ export const useAuthStore = create<AuthState>()((set, get) => ({
             user: res.user
         })
         return true
+    },
+    logout: async () => {
+        localStorage.removeItem('token');
+        set({
+            status: 'not-authenticated',
+            token: undefined,
+            user: undefined
+        })
     },
     refreshToken: async () => {
         const res = await authRefreshToken();
