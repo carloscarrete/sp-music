@@ -11,6 +11,10 @@ interface PlayState {
   favoritesTracks: Tracks[];
   audioElement: HTMLAudioElement | null;
   duration: number;
+  showSearch: boolean;
+  searchQuery: string;
+  filteredTracks: Tracks[];
+
   togglePlayPause: () => void;
   stop: () => void;
   nextTrack: () => void;
@@ -23,6 +27,9 @@ interface PlayState {
   setFavoritesTracks: (tracks: Tracks[]) => void;
   setCurrentTrackIndex: (trackId: string) => void;
   setFavoriteCurrentTrack: (trackId: string) => void;
+  setShowSearch: (showSearch: boolean) => void;
+  setSearchQuery: (query: string) => void;
+  setFilteredTracks: (tracks: Tracks[]) => void;
 }
 
 const usePlayerStore = create<PlayState>((set, get) => ({
@@ -34,6 +41,9 @@ const usePlayerStore = create<PlayState>((set, get) => ({
   audioElement: null,
   tracks: [],
   favoritesTracks: [],
+  showSearch: false,
+  searchQuery: '',
+  filteredTracks: [],
   togglePlayPause: () => {
     const { audioElement, isPlaying } = get();
     if (!audioElement) return;
@@ -80,27 +90,27 @@ const usePlayerStore = create<PlayState>((set, get) => ({
     set({ currentTrackIndex: newIndex, isPlaying: true, currentTime: 0 });
   },
   previousTrack: async () => {
-    const {currentTrackIndex, audioElement, tracks} = get();
-    if(tracks.length===0) return;
+    const { currentTrackIndex, audioElement, tracks } = get();
+    if (tracks.length === 0) return;
     const newIndex = (currentTrackIndex + 1) % tracks.length;
 
-    if(audioElement){
-      try{
+    if (audioElement) {
+      try {
         audioElement.pause();
-        set({currentTrackIndex: newIndex, currentTime:0})
+        set({ currentTrackIndex: newIndex, currentTime: 0 })
         audioElement.src = tracks[newIndex].audio.url,
 
-        await new Promise((resolve,reject)=>{
-          audioElement.oncanplay = resolve;
-          audioElement.load();
-        })
+          await new Promise((resolve, reject) => {
+            audioElement.oncanplay = resolve;
+            audioElement.load();
+          })
 
         audioElement.play();
-        set({isPlaying: true});
+        set({ isPlaying: true });
 
-      }catch(error){
+      } catch (error) {
         console.log(error);
-        set({isPlaying: false})
+        set({ isPlaying: false })
       }
     }
   },
@@ -128,26 +138,26 @@ const usePlayerStore = create<PlayState>((set, get) => ({
     set({ tracks })
   },
 
-  setCurrentTrackIndex: async (trackId:string) => {
-    const {audioElement, tracks} = get();
+  setCurrentTrackIndex: async (trackId: string) => {
+    const { audioElement, tracks } = get();
 
     const index = tracks.findIndex(track => track._id === trackId);
-  
-  if (index === -1) return;
 
-    if(audioElement){
-      try{
+    if (index === -1) return;
+
+    if (audioElement) {
+      try {
         audioElement.pause();
-        set({currentTrackIndex: index, currentTime:0})
-        audioElement.src =  tracks[index].audio.url,
+        set({ currentTrackIndex: index, currentTime: 0 })
+        audioElement.src = tracks[index].audio.url,
 
-        await new Promise((resolve, reject)=>{
-          audioElement.oncanplay = resolve;
-          audioElement.load();
-        })
+          await new Promise((resolve, reject) => {
+            audioElement.oncanplay = resolve;
+            audioElement.load();
+          })
         audioElement.play();
-        set({isPlaying: true});
-      }catch(error){
+        set({ isPlaying: true });
+      } catch (error) {
         console.log(error);
       }
     }
@@ -159,12 +169,12 @@ const usePlayerStore = create<PlayState>((set, get) => ({
     try {
       const { tracks } = get();
       const res = await setFavoriteTrack(trackId);
-  
+
       if (res.data.acknowledged && res.data.modifiedCount > 0) {
         const updatedTracks = tracks.map(track =>
           track._id === trackId ? { ...track, favorite: !track.favorite } : track
         );
-  
+
         set({
           tracks: updatedTracks,
           favoritesTracks: updatedTracks.filter(track => track.favorite)
@@ -173,8 +183,15 @@ const usePlayerStore = create<PlayState>((set, get) => ({
     } catch (error) {
       console.error(error);
     }
-  }
-  
+  },
+  setShowSearch: (show: boolean) => set({ showSearch: show }),
+  setSearchQuery: (term: string) => {
+    set({ searchQuery: term })
+    if (term === '') {
+      set({ filteredTracks: [] })
+    }
+  },
+    setFilteredTracks: (tracks: Tracks[]) => set({ filteredTracks: tracks }),
 }))
 
 export default usePlayerStore;

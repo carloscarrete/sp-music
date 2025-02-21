@@ -1,5 +1,6 @@
 import { Tracks } from "../../entities/domain/tracks"
 import usePlayerStore from "../../store/useWebPlayer";
+import { SearchInput } from "./SearchInput";
 
 interface Props {
     tracks: Tracks[];
@@ -7,13 +8,16 @@ interface Props {
 
 export const PlayerScreen = ({tracks}: Props) => {
 
-    const {setCurrentTrackIndex} = usePlayerStore();
+    const {setCurrentTrackIndex,filteredTracks, showSearch, searchQuery} = usePlayerStore();
+
+    const displayedTracks = searchQuery ? filteredTracks : tracks
 
     return (
         <main className="bg-black flex-1 p-2">
+            <SearchInput />
             <div className="bg-zinc-900 flex h-screen rounded-xl p-4">
                 <div className="grid grid-cols-5 md:grid-cols-4 sm:grid-cols-2 lg:grid-cols-5 gap-6 auto-rows-min">
-                    {tracks.map((track, index) => (
+                    {displayedTracks.map((track, index) => (
                         <div key={track._id} className="relative group overflow-hidden" onClick={()=>setCurrentTrackIndex(track._id)}>
                             {/* Contenedor para la imagen con transición */}
                             <div className="transform transition-all duration-300 ease-in-out group-hover:scale-110">

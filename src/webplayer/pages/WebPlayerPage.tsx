@@ -64,6 +64,17 @@ export const WebPlayerPage = () => {
 
   }, [setCurrentTime, setDuration]);
 
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+        if (e.key === 'ArrowRight') nextTrack();
+        if (e.key === 'ArrowLeft') previousTrack();
+        if (e.key === ' ') togglePlayPause();
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+}, [nextTrack, previousTrack, togglePlayPause]);
+
   return (
     <div className="flex h-screen text-white flex-col bg-black">
       <div className="flex flex-1 overflow-hidden">
