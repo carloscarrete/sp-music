@@ -22,7 +22,8 @@ export const WebPlayerPage = () => {
     setTracks,
     tracks,
     favoritesTracks,
-    setFavoritesTracks
+    setFavoritesTracks,
+    setShowSearch
   } = usePlayerStore();
 
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -69,6 +70,7 @@ export const WebPlayerPage = () => {
         if (e.key === 'ArrowRight') nextTrack();
         if (e.key === 'ArrowLeft') previousTrack();
         if (e.key === ' ') togglePlayPause();
+        if (e.key === 'Escape') setShowSearch(false);
     };
 
     window.addEventListener('keydown', handleKeyPress);

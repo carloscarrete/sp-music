@@ -2,12 +2,12 @@
 
 @layer base {
   html {
-    @apply bg-black; /* En lugar de usar el color directo */
+    @apply bg-black; 
   }
 }
 
 #root {
-  @apply w-full min-h-screen; /* En lugar de max-width fijo */
+  @apply w-full min-h-screen; 
 }
 
 @keyframes scroll {

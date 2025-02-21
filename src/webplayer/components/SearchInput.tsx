@@ -1,4 +1,3 @@
-// components/SearchInput.tsx
 import { useEffect } from 'react'
 import usePlayerStore from '../../store/useWebPlayer'
 
@@ -31,11 +30,11 @@ export const SearchInput = () => {
   if (!showSearch) return null
 
   return (
-    <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300">
+    <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 w-1/2">
       <input
         type="text"
         placeholder="Buscar canciones..."
-        className={`bg-zinc-800 text-white px-4 py-2 rounded-full w-64 focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300 ${
+        className={`bg-zinc-800 text-white px-4 py-2 rounded-full w-full focus:outline-none focus:ring-2 focus:ring-green-500 transition-all duration-300 ${
           showSearch ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
         }`}
         value={searchQuery}
