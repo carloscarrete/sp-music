@@ -7,11 +7,16 @@ const webPlayerApi = axios.create({
     baseURL: VITE_API_URL,
 })
 
-webPlayerApi.interceptors.request.use((config)=> {
+webPlayerApi.interceptors.request.use((config) => {
     const token = localStorage.getItem('token');
-    if(token){
+    if (token) {
         config.headers["Authorization"] = `Bearer ${token}`;
     }
+
+    if (config.data instanceof FormData) {
+        config.headers["Content-Type"] = "multipart/form-data";
+    }
+
     return config;
 })
 

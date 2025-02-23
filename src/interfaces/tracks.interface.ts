@@ -18,6 +18,29 @@ export interface Track {
     audio:     Audio;
 }
 
+
+export interface CreateTrack {
+    name:      string;
+    album:     string;
+    cover:     string;
+    artist:    Artist;
+    duration:  Duration;
+    favorite:  boolean;
+    mediaId:   string;
+}
+
+export interface Artist {
+    name:        string;
+    nickname:    string;
+    nationality: string;
+}
+
+export interface Duration {
+    start: number;
+    end:   number;
+}
+
+
 export interface Artist {
     name:        string;
     nickname:    string;

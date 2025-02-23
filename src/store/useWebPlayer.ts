@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { Tracks } from "../entities/domain/tracks";
 import { setFavoriteTrack } from "../actions/webplayer/tracks";
+import { AdminStatus } from "../interfaces/admin.status";
 
 interface PlayState {
   isPlaying: boolean;
@@ -14,6 +15,11 @@ interface PlayState {
   showSearch: boolean;
   searchQuery: string;
   filteredTracks: Tracks[];
+  showSlideMenu: boolean;
+
+  adminView: AdminStatus
+  selectedTrackForEdit: Tracks | null;
+  selectedTrackForDelete: Tracks | null;
 
   togglePlayPause: () => void;
   stop: () => void;
@@ -30,9 +36,18 @@ interface PlayState {
   setShowSearch: (showSearch: boolean) => void;
   setSearchQuery: (query: string) => void;
   setFilteredTracks: (tracks: Tracks[]) => void;
+  setShowSlideMenu: (show: boolean) => void;
+
+  setAdminView: (view: PlayState['adminView']) => void;
+  setSelectedTrackForEdit: (track: Tracks | null) => void;
+  setSelectedTrackForDelete: (track: Tracks | null) => void;
 }
 
 const usePlayerStore = create<PlayState>((set, get) => ({
+  adminView: null,
+  selectedTrackForEdit: null,
+  selectedTrackForDelete: null,
+
   isPlaying: false,
   volume: 1,
   duration: 0,
@@ -44,6 +59,7 @@ const usePlayerStore = create<PlayState>((set, get) => ({
   showSearch: false,
   searchQuery: '',
   filteredTracks: [],
+  showSlideMenu: false,
   togglePlayPause: () => {
     const { audioElement, isPlaying } = get();
     if (!audioElement) return;
@@ -192,6 +208,10 @@ const usePlayerStore = create<PlayState>((set, get) => ({
     }
   },
     setFilteredTracks: (tracks: Tracks[]) => set({ filteredTracks: tracks }),
+    setShowSlideMenu: (show: boolean) => set({ showSlideMenu: show }),
+    setAdminView: (view) => set({ adminView: view }),
+    setSelectedTrackForEdit: (track) => set({ selectedTrackForEdit: track }),
+    setSelectedTrackForDelete: (track) => set({ selectedTrackForDelete: track }),
 }))
 
 export default usePlayerStore;

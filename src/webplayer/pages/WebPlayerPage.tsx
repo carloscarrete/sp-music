@@ -5,6 +5,8 @@ import { useEffect, useRef } from "react";
 import { getTracks } from "../../actions/webplayer/tracks";
 import usePlayerStore from "../../store/useWebPlayer";
 import { useQuery } from "@tanstack/react-query";
+import { FABMenu } from "../components/FABMenu";
+import { SlideMenu } from "../components/SlideMenu";
 
 export const WebPlayerPage = () => {
 
@@ -12,6 +14,7 @@ export const WebPlayerPage = () => {
     isPlaying,
     currentTrackIndex,
     currentTime,
+    showSlideMenu,
     togglePlayPause,
     nextTrack,
     previousTrack,
@@ -27,6 +30,7 @@ export const WebPlayerPage = () => {
   } = usePlayerStore();
 
   const audioRef = useRef<HTMLAudioElement>(null);
+
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['tracks'],
@@ -69,7 +73,7 @@ export const WebPlayerPage = () => {
     const handleKeyPress = (e: KeyboardEvent) => {
         if (e.key === 'ArrowRight') nextTrack();
         if (e.key === 'ArrowLeft') previousTrack();
-        if (e.key === ' ') togglePlayPause();
+        if (e.key === 'b') togglePlayPause();
         if (e.key === 'Escape') setShowSearch(false);
     };
 
@@ -79,6 +83,8 @@ export const WebPlayerPage = () => {
 
   return (
     <div className="flex h-screen text-white flex-col bg-black">
+       <FABMenu />
+       {showSlideMenu && <SlideMenu />}
       <div className="flex flex-1 overflow-hidden">
         <Sidebar tracks={favoritesTracks}/>
         <PlayerScreen tracks={tracks}/>

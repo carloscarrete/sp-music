@@ -1,6 +1,6 @@
 import webPlayerApi from "../../api/webPlayerApi";
 import { Tracks } from "../../entities/domain/tracks";
-import { TrackResponse } from "../../interfaces/tracks.interface";
+import { CreateTrack, Track, TrackResponse } from "../../interfaces/tracks.interface";
 import { TrackMapper } from "../../mappers/tracks.mapper";
 
 
@@ -13,6 +13,39 @@ export const getTracks = async (): Promise<Tracks[]> => {
         console.log(error);
         throw new Error("Algo salió mal");
 
+    }
+}
+
+export const createTrack = async (track: CreateTrack): Promise<Tracks> => {
+    try {
+        const { data } = await webPlayerApi.post<Track>('/tracks', track);
+        const newTrack = TrackMapper.trackMapper(data);
+        return newTrack;
+    }
+    catch (error) {
+        console.log(error);
+        throw new Error("Algo salió mal");
+    }
+}
+
+export const updateTrack = async (track: Tracks) => {
+    try {
+        const res = await webPlayerApi.put(`/tracks/${track._id}`, {
+            ...track,
+            mediaId: track.audio._id,
+        });
+        return res.data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const deleteTrack = async (trackId: string) => {
+    try{
+        const res = await webPlayerApi.delete(`/tracks/${trackId}`);
+        return res.data
+    }catch(error){
+        console.log(error)
     }
 }
 

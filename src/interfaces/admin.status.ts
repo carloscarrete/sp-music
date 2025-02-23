@@ -1,0 +1,1 @@
+export type AdminStatus = 'upload' | 'edit' | 'delete' | null;
