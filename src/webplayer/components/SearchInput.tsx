@@ -30,7 +30,7 @@ export const SearchInput = () => {
   if (!showSearch) return null
 
   return (
-    <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 w-1/2">
+    <div className="bg-red-400 fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 w-1/2">
       <input
         type="text"
         placeholder="Buscar canciones..."

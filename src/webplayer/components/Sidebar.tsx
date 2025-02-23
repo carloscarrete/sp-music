@@ -12,7 +12,7 @@ export const Sidebar = ({ tracks }: Props) => {
     const { setCurrentTrackIndex } = usePlayerStore();
 
     return (
-        <aside className="w-72 bg-black p-2  flex flex-col gap-2">
+        <aside className="w-72 bg-black p-2  flex flex-col gap-2 hidden md:block">
             <SidebarNav />
 
             <div className="bg-zinc-900 h-full rounded-xl p-4 flex-1 overflow-y-scroll no-scrollbar">
