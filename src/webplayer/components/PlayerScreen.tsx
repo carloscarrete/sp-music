@@ -8,7 +8,7 @@ interface Props {
 
 export const PlayerScreen = ({tracks}: Props) => {
 
-    const {setCurrentTrackIndex,filteredTracks, showSearch, searchQuery} = usePlayerStore();
+    const {setCurrentTrackIndex,filteredTracks, searchQuery} = usePlayerStore();
 
     const displayedTracks = searchQuery ? filteredTracks : tracks
 
@@ -19,7 +19,7 @@ export const PlayerScreen = ({tracks}: Props) => {
             <div className="bg-zinc-900  h-screen rounded-xl p-4 overflow-y-scroll no-scrollbar hidden sm:block">
                 <div className="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-6 auto-rows-min">
                 {/* <div className="grid grid-cols-5 md:grid-cols-4 sm:grid-cols-2 lg:grid-cols-5 gap-6 auto-rows-min"> */}
-                    {displayedTracks.map((track, index) => (
+                    {displayedTracks.map((track) => (
                         <div key={track._id} className="relative group overflow-hidden" onClick={()=>setCurrentTrackIndex(track._id)}>
                             <div className="transform transition-all duration-300 ease-in-out group-hover:scale-110 flex items-center justify-center overflow-hidden">
                                 <img 

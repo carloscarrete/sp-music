@@ -32,7 +32,7 @@ export const WebPlayerPage = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
 
 
-  const { data, isLoading, isError } = useQuery({
+  const { data } = useQuery({
     queryKey: ['tracks'],
     queryFn: getTracks
   });

@@ -1,4 +1,4 @@
-import { ArrowRight, Heart, Home, Library, Search } from "lucide-react"
+import { ArrowRight, Heart, Library } from "lucide-react"
 import { SidebarNav } from "./SidebarNav"
 import { Tracks } from "../../entities/domain/tracks"
 import usePlayerStore from "../../store/useWebPlayer"
@@ -35,7 +35,7 @@ export const Sidebar = ({ favoriteTracks, tracks }: Props) => {
                 </div>
 
                 <div className="mt-4 flex flex-col gap-2 overflow-hidden">
-                    <div className="flex gap-2 hidden sm:flex">
+                    <div className="gap-2 hidden sm:flex">
                         <div className="bg-gradient-to-br from-purple-700 to to-blue-300 w-10 h-10 items-center justify-center flex rounded-md">
                             <Heart size={24} />
                         </div>
@@ -47,7 +47,7 @@ export const Sidebar = ({ favoriteTracks, tracks }: Props) => {
                     <div className="border-b border-white/25 w-full" />
                     {
                         isSwitchOn ? (
-                            displayedTracks.map((track, index) => (
+                            displayedTracks.map((track) => (
 
                                 <div className="flex gap-2 mt-1 hover:bg-zinc-800 cursor-pointer" key={track._id} onClick={() => setCurrentTrackIndex(track._id)}>
                                     <img src={track.cover} alt="Cover" className="w-10 h-10 rounded-md" />
@@ -59,7 +59,7 @@ export const Sidebar = ({ favoriteTracks, tracks }: Props) => {
                             ))
                         ) : 
                         (
-                            favoriteTracks.map((track, index) => (
+                            favoriteTracks.map((track) => (
 
                                 <div className="flex gap-2 mt-1 hover:bg-zinc-800 cursor-pointer" key={track._id} onClick={() => setCurrentTrackIndex(track._id)}>
                                     <img src={track.cover} alt="Cover" className="w-10 h-10 rounded-md" />

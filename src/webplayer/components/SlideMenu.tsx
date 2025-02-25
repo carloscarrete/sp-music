@@ -12,8 +12,6 @@ export const SlideMenu = () => {
     setShowSlideMenu,
     adminView,
     setAdminView,
-    selectedTrackForEdit,
-    selectedTrackForDelete
   } = usePlayerStore();
   
   const { user } = useAuthStore();

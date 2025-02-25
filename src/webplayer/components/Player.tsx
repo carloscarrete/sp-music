@@ -1,4 +1,4 @@
-import { Heart, Shuffle, SkipBack, Play, SkipForward, Repeat, Volume, Pause } from "lucide-react"
+import {  Shuffle, SkipBack, Play, SkipForward, Repeat, Pause } from "lucide-react"
 import { CurrentSong } from "./CurrentSong"
 import { VolumeAudio } from "./VolumeAudio"
 import { Tracks } from "../../entities/domain/tracks";

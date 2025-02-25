@@ -91,7 +91,7 @@ const usePlayerStore = create<PlayState>((set, get) => ({
         set({ currentTrackIndex: newIndex, currentTime: 0 });
         audioElement.src = tracks[newIndex].audio.url;
 
-        await new Promise((resolve, reject) => {
+        await new Promise((resolve) => {
           audioElement.oncanplay = resolve;
           audioElement.load();
         })
@@ -116,7 +116,7 @@ const usePlayerStore = create<PlayState>((set, get) => ({
         set({ currentTrackIndex: newIndex, currentTime: 0 })
         audioElement.src = tracks[newIndex].audio.url,
 
-          await new Promise((resolve, reject) => {
+          await new Promise((resolve) => {
             audioElement.oncanplay = resolve;
             audioElement.load();
           })
@@ -167,7 +167,7 @@ const usePlayerStore = create<PlayState>((set, get) => ({
         set({ currentTrackIndex: index, currentTime: 0 })
         audioElement.src = tracks[index].audio.url,
 
-          await new Promise((resolve, reject) => {
+          await new Promise((resolve) => {
             audioElement.oncanplay = resolve;
             audioElement.load();
           })

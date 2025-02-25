@@ -1,4 +1,4 @@
-import { Volume, Volume1, Volume2, VolumeX } from 'lucide-react'
+import {  Volume1, Volume2, VolumeX } from 'lucide-react'
 import usePlayerStore from '../../store/useWebPlayer'
 
 export const VolumeAudio = () => {

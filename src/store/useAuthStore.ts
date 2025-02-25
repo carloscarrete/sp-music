@@ -15,7 +15,7 @@ export interface AuthState {
     refreshToken: () => Promise<boolean>;
 }
 
-export const useAuthStore = create<AuthState>()((set, get) => ({
+export const useAuthStore = create<AuthState>()((set) => ({
     token: undefined,
     user: undefined,
     status: 'checking',
