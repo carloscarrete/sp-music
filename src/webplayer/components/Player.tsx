@@ -33,7 +33,7 @@ export const Player = ({ isPlaying, togglePlayPause, currentTime, duration, onSe
                         disabled={tracks.length === 0}
                     >
                         <SkipBack size={window.innerWidth > 768 ? 24 : 30} className={`cursor-pointer ${tracks.length === 0 ? 'text-zinc-600' : 'text-zinc-400 hover:text-white'}`} />                    </button>
-                    <button className="w- h-10 sm:w-8 sm:h-8 bg-white rounded-full flex items-center justify-center text-black hover:scale-105">
+                    <button className="w-10 h-10 sm:w-8 sm:h-8 bg-white rounded-full flex items-center justify-center text-black hover:scale-105">
                         {isPlaying ? (
                             <Pause onClick={togglePlayPause} size={window.innerWidth > 768 ? 24 : 30} />
                         ) : (
