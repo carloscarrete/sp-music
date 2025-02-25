@@ -86,7 +86,7 @@ export const WebPlayerPage = () => {
        <FABMenu />
        {showSlideMenu && <SlideMenu />}
       <div className="flex flex-1 overflow-hidden">
-        <Sidebar tracks={favoritesTracks}/>
+        <Sidebar favoriteTracks={favoritesTracks} tracks={tracks}/>
         <PlayerScreen tracks={tracks}/>
       </div>
       <audio
