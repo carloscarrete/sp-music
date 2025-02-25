@@ -11,7 +11,7 @@ export const FABMenu = () => {
   return (
     <button
       onClick={() => setShowSlideMenu(true)}
-      className="fixed right-6 bottom-24 p-3 bg-green-600 rounded-full hover:bg-green-500 transition-all shadow-xl z-40
+      className="fixed right-6 bottom-36 sm:bottom-24 p-3 bg-green-600 rounded-full hover:bg-green-500 transition-all shadow-xl z-40
                  animate-bounce hover:animate-none"
     >
       <MoreVertical 
