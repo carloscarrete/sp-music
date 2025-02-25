@@ -32,8 +32,7 @@ export const CurrentSong = () => {
             </div>
             <Heart
                 onClick={handleFavorite}
-                size={24}
-                fill={currentTrack?.favorite ? "red" : "none"}
+                size={window.innerWidth > 768 ? 24 : 30}                fill={currentTrack?.favorite ? "red" : "none"}
                 stroke="red"
                 className={`cursor-pointer text-white ml-3 hover:text-red-600 ${isAnimating ? 'animate-heartbeat' : ''}`}
             />
