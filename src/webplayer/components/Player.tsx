@@ -1,4 +1,4 @@
-import {  Shuffle, SkipBack, Play, SkipForward, Repeat, Pause } from "lucide-react"
+import { Shuffle, SkipBack, Play, SkipForward, Repeat, Pause } from "lucide-react"
 import { CurrentSong } from "./CurrentSong"
 import { VolumeAudio } from "./VolumeAudio"
 import { Tracks } from "../../entities/domain/tracks";
@@ -22,27 +22,27 @@ export const Player = ({ isPlaying, togglePlayPause, currentTime, duration, onSe
     };
 
     return (
-        <div className="bg-black h-14  border-t border-zinc-800 px-4 flex items-center">
+        <div className="bg-black sm:h-14 h-30 border-t border-zinc-800 px-4 flex flex-col sm:flex-row items-center">
             <CurrentSong />
 
-            <div className="flex gap-2 flex-1 items-center flex-col">
+            <div className="flex w-full gap-2 flex-1 items-center flex-col">
                 <div className="flex items-center gap-6">
-                    <Shuffle size={24} className="cursor-pointer text-zinc-400 hover:text-white" />
+                    <Shuffle size={window.innerWidth > 768 ? 24 : 30} className="cursor-pointer text-zinc-400 hover:text-white" />
                     <button
                         onClick={onPreviousTrack}
                         disabled={tracks.length === 0}
                     >
-                        <SkipBack size={24} className={`cursor-pointer ${tracks.length === 0 ? 'text-zinc-600' : 'text-zinc-400 hover:text-white'}`} />                    </button>
-                    <button className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-black hover:scale-105">
+                        <SkipBack size={window.innerWidth > 768 ? 24 : 30} className={`cursor-pointer ${tracks.length === 0 ? 'text-zinc-600' : 'text-zinc-400 hover:text-white'}`} />                    </button>
+                    <button className="w- h-10 sm:w-8 sm:h-8 bg-white rounded-full flex items-center justify-center text-black hover:scale-105">
                         {isPlaying ? (
-                            <Pause onClick={togglePlayPause} size={24} />
+                            <Pause onClick={togglePlayPause} size={window.innerWidth > 768 ? 24 : 30} />
                         ) : (
-                            <Play onClick={togglePlayPause} size={24} />
+                            <Play onClick={togglePlayPause} size={window.innerWidth > 768 ? 24 : 30} />
                         )}                    </button>
                     <button onClick={onNextTrack}>
-                        <SkipForward size={24} className="cursor-pointer text-zinc-400 hover:text-white" />
+                        <SkipForward size={window.innerWidth > 768 ? 24 : 30} className="cursor-pointer text-zinc-400 hover:text-white" />
                     </button>
-                    <Repeat size={24} className="cursor-pointer text-zinc-400 hover:text-white" />
+                    <Repeat size={window.innerWidth > 768 ? 24 : 30} className="cursor-pointer text-zinc-400 hover:text-white" />
                 </div>
                 <div className="w-full max-w-lg flex items-center gap-2">
                     <span className="text-sm text-zinc-400">{formatTime(currentTime)}</span>
@@ -61,6 +61,8 @@ export const Player = ({ isPlaying, togglePlayPause, currentTime, duration, onSe
                 </div>
             </div>
 
-            <VolumeAudio />
+            <div>
+                <VolumeAudio />
+            </div>
         </div>)
 }

@@ -24,7 +24,7 @@ export const CurrentSong = () => {
 
 
     return (
-        <div className="flex gap-3 w-80 items-center">
+        <div className="flex gap-3 w-full sm:w-80 items-center">
             <img src={currentTrack?.cover} alt="Cover" className="w-10 h-10 rounded-md object-cover" />
             <div className="overflow-hidden w-3/5">
                 <p className="font-bold truncate hover:animate-scroll">{currentTrack?.name}</p>

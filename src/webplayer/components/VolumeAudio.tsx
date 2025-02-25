@@ -16,7 +16,7 @@ export const VolumeAudio = () => {
   };
 
   return (
-    <div className="w-80 flex justify-end items-center gap-4">
+    <div className="w-80 flex justify-center sm:justify-end items-center gap-4">
       {getVolumeIcon()}
     {/* <div className="w-24 h-1 bg-zinc-600 rounded-full">
         <div className="w-1/2 h-full bg-white rounded-full" />
@@ -27,7 +27,7 @@ export const VolumeAudio = () => {
         defaultValue={volume}
         onChange={onChangeVolume}
         step={0.1}
-        className="w-24 h-1 bg-zinc-600 rounded-full"
+        className="w-3/4 sm:w-24 h-1 bg-zinc-600 rounded-full"
      />
 </div>  )
 }
