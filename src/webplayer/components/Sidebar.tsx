@@ -46,7 +46,7 @@ export const Sidebar = ({ favoriteTracks, tracks }: Props) => {
                     </div>
                     <div className="border-b border-white/25 w-full" />
                     {
-                        !isSwitchOn ? (
+                        isSwitchOn  && window.innerWidth > 768 ? (
                             displayedTracks.map((track) => (
 
                                 <div className="flex gap-2 mt-1 hover:bg-zinc-800 cursor-pointer" key={track._id} onClick={() => setCurrentTrackIndex(track._id)}>
