@@ -47,7 +47,7 @@ export const LoginPage = () => {
             {({ values, handleChange, handleSubmit, errors, touched, isSubmitting, dirty }) => (
                 <div className="h-screen flex bg-gradient-to-br from-gray-800 to-black items-center justify-center">
                     <div className="h-4/5 flex flex-col p-6 justify-center bg-zinc-900 w-96 rounded-2xl text-white shadow-lg">
-                        <h1 className="text-4xl font-extrabold mb-6 text-center">Iniciar sesión</h1>
+                        <h1 className="text-4xl font-extrabold mb-6 text-center">Login</h1>
                         <div className="flex flex-col space-y-4">
                             <div className="flex flex-col">
                                 <label className="font-semibold mb-1">Email:</label>
