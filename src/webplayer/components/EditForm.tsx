@@ -5,7 +5,6 @@ import { Tracks } from "../../entities/domain/tracks";
 import { useEffect } from "react";
 import { useQueryClient } from '@tanstack/react-query';
 import { updateTrack } from "../../actions/webplayer/tracks";
-import { TrackResponse } from '../../interfaces/tracks.interface';
 
 export const EditForm = () => {
   const queryClient = useQueryClient(); 
