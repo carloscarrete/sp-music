@@ -62,8 +62,8 @@ export const SlideMenu = () => {
               >
                 <span className="text-2xl">🎵</span>
                 <div>
-                  <h3 className="font-semibold">Subir Canción</h3>
-                  <p className="text-sm text-zinc-400">Agregar nueva música al catálogo</p>
+                  <h3 className="font-semibold">Upload a track</h3>
+                  <p className="text-sm text-zinc-400">Add new music to the catalog</p>
                 </div>
               </button>
 
@@ -74,8 +74,8 @@ export const SlideMenu = () => {
               >
                 <span className="text-2xl">✏️</span>
                 <div>
-                  <h3 className="font-semibold">Editar Canción</h3>
-                  <p className="text-sm text-zinc-400">Modificar información existente</p>
+                  <h3 className="font-semibold">Edit track</h3>
+                  <p className="text-sm text-zinc-400">Modify existing information</p>
                 </div>
               </button>
 
@@ -86,8 +86,8 @@ export const SlideMenu = () => {
               >
                 <span className="text-2xl">🗑️</span>
                 <div>
-                  <h3 className="font-semibold">Eliminar Canción</h3>
-                  <p className="text-sm text-zinc-400">Remover contenido del sistema</p>
+                  <h3 className="font-semibold">Delete track</h3>
+                  <p className="text-sm text-zinc-400">Remove tracks</p>
                 </div>
               </button>
             </div>

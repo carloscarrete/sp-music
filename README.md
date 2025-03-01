@@ -1,213 +1,217 @@
-# WebPlayer - Reproductor de Música
-
-WebPlayer es una aplicación web moderna para reproducir música, desarrollada con **React**, **TypeScript**, **Vite**, **TailwindCSS**, **Zustand** en el frontend, y **Node.js**, **Express**, **MongoDB/MySQL**, **JWT** en el backend. La aplicación permite a los usuarios autenticarse, buscar canciones, reproducir música, marcar canciones como favoritas y, si tienen permisos de administrador, gestionar el catálogo de canciones (subir, editar y eliminar).
-
-
-## Características principales
-
-### Frontend
-- **Reproducción de música**: Reproduce canciones con controles básicos (play/pause, siguiente, anterior, volumen).
-- **Autenticación**: Los usuarios pueden registrarse e iniciar sesión.
-- **Búsqueda**: Busca canciones por nombre o artista.
-- **Favoritos**: Los usuarios pueden marcar canciones como favoritas y filtrar la lista para ver solo sus favoritas.
-- **Panel de administración**: Los usuarios con rol de administrador pueden subir, editar y eliminar canciones.
-- **Diseño responsive**: La aplicación está optimizada para dispositivos móviles y desktop.
-
-### Backend
-- **Autenticación JWT**: Registro, inicio de sesión y renovación de tokens.
-- **Gestión de canciones**: CRUD completo para canciones, incluyendo la posibilidad de marcar como favoritas.
-- **Gestión de archivos**: Subida y eliminación de archivos de audio e imágenes.
-- **Swagger**: Documentación de la API disponible en `/api-docs`.
-- **Pruebas unitarias**: Pruebas automatizadas para endpoints clave.
+### SP Melodic - Music Player  
+SP Melodic is a modern web application for playing music based on Spotify, developed using React, TypeScript, Vite, TailwindCSS, and Zustand on the frontend, and Node.js, Express, MongoDB/MySQL, and JWT on the backend. The app allows users to authenticate, search for songs, play music, mark songs as favorites, and, if they have admin permissions, manage the song catalog (upload, edit, and delete).  
 
 ---
 
-## Tecnologías utilizadas
+### Key Features  
 
-### Frontend
-- **React**
-- **TypeScript**
-- **Vite**
-- **TailwindCSS**
-- **Zustand** (gestión de estado)
-- **React Router** (enrutamiento)
-- **Axios** (peticiones HTTP)
-- **React Query** (gestión de datos)
-- **Lucide React** (iconos)
+#### Frontend  
+- **Music Playback**: Play songs with basic controls (play/pause, next, previous, volume).  
+- **Authentication**: Users can sign up and log in.  
+- **Search**: Search for songs by name or artist.  
+- **Favorites**: Users can mark songs as favorites and filter the list to view only their favorites.  
+- **Admin Panel**: Admin users can upload, edit, and delete songs.  
+- **Responsive Design**: Optimized for both mobile and desktop devices.  
 
-### Backend
-- **Node.js**
-- **Express**
-- **MongoDB** o **MySQL** (según configuración)
-- **JWT** (autenticación)
-- **Multer** (gestión de archivos)
-- **Swagger** (documentación de la API)
-- **Jest** (pruebas unitarias)
+#### Backend  
+- **JWT Authentication**: Registration, login, and token renewal.  
+- **Song Management**: Full CRUD functionality for songs, including marking them as favorites.  
+- **File Management**: Upload and delete audio files and images.  
+- **Swagger**: API documentation available at `/api-docs`.  
+- **Unit Testing**: Automated testing for key endpoints.  
 
 ---
 
-## Requisitos previos
+### Technologies Used  
 
-Antes de ejecutar el proyecto, asegúrate de tener instalado:
+#### Frontend  
+- React  
+- TypeScript  
+- Vite  
+- TailwindCSS  
+- Zustand (state management)  
+- React Router (routing)  
+- Axios (HTTP requests)  
+- React Query (data management)  
+- Lucide React (icons)  
 
-- **Node.js** (v16 o superior)
-- **npm** o **yarn** (gestor de paquetes)
-- **MongoDB** o **MySQL** (dependiendo de la configuración del backend)
+#### Backend  
+- Node.js  
+- Express  
+- MongoDB or MySQL (depending on the configuration)  
+- JWT (authentication)  
+- Multer (file management)  
+- Swagger (API documentation)  
+- Jest (unit testing)  
 
 ---
 
-## Configuración del proyecto
+### Prerequisites  
+Before running the project, ensure you have the following installed:  
+- Node.js (v16 or higher)  
+- npm or yarn (package manager)  
+- MongoDB or MySQL (depending on the backend configuration)  
 
-### Frontend
+---
 
-1. **Clona el repositorio**:
+### Project Setup  
+
+#### Frontend  
+
+1. Clone the repository:  
    ```bash
-   git clone https://github.com/tu-usuario/carloscarrete-sp-music.git
-   cd carloscarrete-sp-music
-   ```
+   git clone https://github.com/your-username/carloscarrete-sp-music.git  
+   cd carloscarrete-sp-music  
+   ```  
 
-2. **Instala las dependencias**:
+2. Install dependencies:  
    ```bash
-   npm install
-   # o
-   yarn install
-   ```
+   npm install  
+   # or  
+   yarn install  
+   ```  
 
-3. **Configura las variables de entorno**:
-   - Crea un archivo `.env` en la raíz del proyecto basado en el archivo `.env-template`.
-   - Define la variable `VITE_API_URL` con la URL de tu API backend.
+3. Configure environment variables:  
+   - Create a `.env` file in the project root based on the `.env-template` file.  
+   - Define the `VITE_API_URL` variable with your backend API URL.  
+   Example:  
+   ```plaintext
+   VITE_API_URL=http://localhost:3000/api/v1  
+   ```  
 
-   Ejemplo:
-   ```env
-   VITE_API_URL=http://localhost:3000/api/v1
-   ```
-
-4. **Ejecuta el proyecto**:
+4. Run the project:  
    ```bash
-   npm run dev
-   # o
-   yarn dev
-   ```
+   npm run dev  
+   # or  
+   yarn dev  
+   ```  
 
-   La aplicación estará disponible en `http://localhost:5173`.
-
-### Backend
-
-1. **Clona el repositorio del backend**:
-   ```bash
-   git clone https://github.com/carloscarrete/backend-tracks.git
-   cd backend-tracks
-   ```
-
-2. **Instala las dependencias**:
-   ```bash
-   npm install
-   # o
-   yarn install
-   ```
-
-3. **Configura las variables de entorno**:
-   - Crea un archivo `.env` en la raíz del proyecto basado en el archivo `.env-template`.
-   - Define las variables necesarias, como `DB_URI`, `JWT_SECRET`, etc.
-
-   Ejemplo:
-   ```env
-   NODE_ENV=dev
-   PORT=3000
-   DB_URI=mongodb://localhost:27017/webplayer
-   JWT_SECRET=mysecretkey
-   ```
-
-4. **Ejecuta el proyecto**:
-   ```bash
-   npm start
-   # o
-   yarn start
-   ```
-
-   El backend estará disponible en `http://localhost:3000`.
+5. The application will be available at [http://localhost:5173](http://localhost:5173).  
 
 ---
 
-## Estructura del proyecto
+#### Backend  
 
-### Frontend
-```
-carloscarrete-sp-music/
-├── public/                 # Archivos públicos (imágenes, etc.)
-├── src/                    # Código fuente de la aplicación
-│   ├── actions/            # Acciones para interactuar con la API
-│   ├── api/                # Configuración de la API (Axios)
-│   ├── assets/             # Recursos estáticos (imágenes, fuentes, etc.)
-│   ├── auth/               # Lógica de autenticación
-│   ├── entities/           # Entidades del dominio (modelos de datos)
-│   ├── helpers/            # Funciones de utilidad
-│   ├── interfaces/         # Interfaces de TypeScript
-│   ├── mappers/            # Mapeadores para transformar datos
-│   ├── router/             # Configuración de rutas (React Router)
-│   ├── store/              # Gestión de estado (Zustand)
-│   ├── webplayer/          # Componentes y páginas del reproductor
-│   ├── App.css             # Estilos globales
-│   ├── main.tsx            # Punto de entrada de la aplicación
-│   └── vite-env.d.ts       # Tipos de Vite
-├── .env-template           # Plantilla para variables de entorno
-├── eslint.config.js        # Configuración de ESLint
-├── index.html              # Página principal de la aplicación
-├── package.json            # Dependencias y scripts del proyecto
-├── tailwind.config.ts      # Configuración de TailwindCSS
-├── tsconfig.json           # Configuración de TypeScript
-├── vite.config.ts          # Configuración de Vite
-└── README.md               # Este archivo
-```
+1. Clone the backend repository:  
+   ```bash
+   git clone https://github.com/carloscarrete/backend-tracks.git  
+   cd backend-tracks  
+   ```  
 
-### Backend
-```
-carloscarrete-backend-tracks/
-├── app.js                  # Punto de entrada del backend
-├── config/                 # Configuración de la base de datos
-├── controllers/            # Controladores para manejar las rutas
-├── docs/                   # Documentación de la API (Swagger)
-├── middleware/             # Middlewares personalizados
-├── models/                 # Modelos de datos (MongoDB/MySQL)
-├── routes/                 # Definición de rutas
-├── storage/                # Almacenamiento de archivos subidos
-├── tests/                  # Pruebas unitarias
-├── utils/                  # Utilidades y helpers
-├── validators/             # Validadores para las solicitudes
-├── .env-template           # Plantilla para variables de entorno
-├── package.json            # Dependencias y scripts del proyecto
-└── README.md               # Documentación del backend
-```
+2. Install dependencies:  
+   ```bash
+   npm install  
+   # or  
+   yarn install  
+   ```  
+
+3. Configure environment variables:  
+   - Create a `.env` file in the project root based on the `.env-template` file.  
+   - Define necessary variables like `DB_URI`, `JWT_SECRET`, etc.  
+   Example:  
+   ```plaintext
+   NODE_ENV=dev  
+   PORT=3000  
+   DB_URI=mongodb://localhost:27017/webplayer  
+   JWT_SECRET=mysecretkey  
+   ```  
+
+4. Run the project:  
+   ```bash
+   npm start  
+   # or  
+   yarn start  
+   ```  
+
+5. The backend will be available at [http://localhost:3000](http://localhost:3000).  
 
 ---
 
-## Scripts disponibles
+### Project Structure  
 
-### Frontend
-- **`npm run dev`**: Inicia el servidor de desarrollo.
-- **`npm run build`**: Compila el proyecto para producción.
-- **`npm run lint`**: Ejecuta ESLint para verificar el código.
-- **`npm run preview`**: Sirve la versión de producción localmente.
+#### Frontend  
+```plaintext
+carloscarrete-sp-music/  
+├── public/                 # Public files (images, etc.)  
+├── src/                    # Application source code  
+│   ├── actions/            # Actions for API interaction  
+│   ├── api/                # API configuration (Axios)  
+│   ├── assets/             # Static resources (images, fonts, etc.)  
+│   ├── auth/               # Authentication logic  
+│   ├── entities/           # Domain entities (data models)  
+│   ├── helpers/            # Utility functions  
+│   ├── interfaces/         # TypeScript interfaces  
+│   ├── mappers/            # Data transformation mappers  
+│   ├── router/             # Routes configuration (React Router)  
+│   ├── store/              # State management (Zustand)  
+│   ├── webplayer/          # Player components and pages  
+│   ├── App.css             # Global styles  
+│   ├── main.tsx            # Application entry point  
+│   └── vite-env.d.ts       # Vite type definitions  
+├── .env-template           # Environment variables template  
+├── eslint.config.js        # ESLint configuration  
+├── index.html              # Main application page  
+├── package.json            # Project dependencies and scripts  
+├── tailwind.config.ts      # TailwindCSS configuration  
+├── tsconfig.json           # TypeScript configuration  
+├── vite.config.ts          # Vite configuration  
+└── README.md               # This file  
+```  
 
-### Backend
-- **`npm start`**: Inicia el servidor de backend.
-- **`npm run dev`**: Inicia el servidor en modo desarrollo con nodemon.
-- **`npm test`**: Ejecuta las pruebas unitarias.
+#### Backend  
+```plaintext
+carloscarrete-backend-tracks/  
+├── app.js                  # Backend entry point  
+├── config/                 # Database configuration  
+├── controllers/            # Route handlers  
+├── docs/                   # API documentation (Swagger)  
+├── middleware/             # Custom middlewares  
+├── models/                 # Data models (MongoDB/MySQL)  
+├── routes/                 # Route definitions  
+├── storage/                # Uploaded file storage  
+├── tests/                  # Unit tests  
+├── utils/                  # Utilities and helpers  
+├── validators/             # Request validators  
+├── .env-template           # Environment variables template  
+├── package.json            # Project dependencies and scripts  
+└── README.md               # Backend documentation  
+```  
 
 ---
 
-## Contribución
+### Available Scripts  
 
-Si deseas contribuir a este proyecto, sigue estos pasos:
+#### Frontend  
+- `npm run dev`: Start the development server.  
+- `npm run build`: Compile the project for production.  
+- `npm run lint`: Run ESLint to check the code.  
+- `npm run preview`: Serve the production build locally.  
 
-1. Haz un fork del repositorio.
-2. Crea una rama para tu feature o corrección: `git checkout -b mi-feature`.
-3. Realiza tus cambios y haz commit: `git commit -m 'Añadir nueva feature'`.
-4. Sube tus cambios: `git push origin mi-feature`.
-5. Abre un Pull Request en GitHub.
+#### Backend  
+- `npm start`: Start the backend server.  
+- `npm run dev`: Start the development server with nodemon.  
+- `npm test`: Run unit tests.  
 
 ---
 
-## Licencia
+### Contribution  
+If you want to contribute to this project, follow these steps:  
+1. Fork the repository.  
+2. Create a branch for your feature or fix:  
+   ```bash
+   git checkout -b my-feature  
+   ```  
+3. Make your changes and commit them:  
+   ```bash
+   git commit -m 'Add new feature'  
+   ```  
+4. Push your changes:  
+   ```bash
+   git push origin my-feature  
+   ```  
+5. Open a Pull Request on GitHub.  
 
-Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+---
+
+### License  
+This project is licensed under the MIT License. See the LICENSE file for more details.  

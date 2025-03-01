@@ -26,7 +26,7 @@ export const Sidebar = ({ favoriteTracks, tracks }: Props) => {
                     <Library size={24} />
                    {/*  <span className="hidden sm:block">Música</span>
                     <span className="sm:hidden">Favoritos</span> */}
-                    {window.innerWidth > 768 ? <span>Música</span> : <span>Favoritos</span>}
+                    {window.innerWidth > 768 ? <span>Music</span> : <span>Favorites</span>}
                     <div className="ml-auto">
                         {
                             window.innerWidth > 768 ? <ArrowRight size={24} className="cursor-pointer text-white" /> :  <Switch  isOn={isSwitchOn} onToggle={setSwitchOn} />
@@ -40,8 +40,8 @@ export const Sidebar = ({ favoriteTracks, tracks }: Props) => {
                             <Heart size={24} />
                         </div>
                         <div>
-                            <p className="font-bold">Canciones que te gustan</p>
-                            <p className="text-sm text-zinc-400">Lista • {favoriteTracks.length} canciones</p>
+                            <p className="font-bold">Songs you like</p>
+                            <p className="text-sm text-zinc-400">List • {favoriteTracks.length} songs</p>
                         </div>
                     </div>
                     <div className="border-b border-white/25 w-full" />

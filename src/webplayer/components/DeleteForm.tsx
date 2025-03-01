@@ -22,14 +22,14 @@ export const DeleteForm = () => {
       setTracks(tracks.filter(track => track._id !== selectedTrackForDelete._id));
       setAdminView(null);
     } catch (error) {
-      console.error("Error eliminando canción:", error);
+      console.error("Error delating the track:", error);
     }
   };
 
   return (
     <div className="bg-zinc-800 p-4 rounded-xl">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-xl font-semibold">Eliminar Canción</h3>
+        <h3 className="text-xl font-semibold">Delete track</h3>
         <X
           size={24}
           className="cursor-pointer text-zinc-400 hover:text-white"
@@ -46,7 +46,7 @@ export const DeleteForm = () => {
               track && setSelectedTrackForDelete(track);
             }}
           >
-            <option value="">Selecciona una canción</option>
+            <option value="">Select a track</option>
             {tracks.map(track => (
               <option key={track._id} value={track._id}>
                 {track.name} - {track.artist.name}
@@ -80,7 +80,7 @@ export const DeleteForm = () => {
               className="px-4 py-2 bg-red-600 rounded-lg hover:bg-red-500 transition-colors flex items-center gap-2"
             >
               <Trash2 size={18} />
-              Confirmar Eliminación
+              Confirm deletion
             </button>
           </div>
         </div>

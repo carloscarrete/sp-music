@@ -37,7 +37,7 @@ export const UploadForm = () => {
 
         const audioResponse = await uploadFile(formDataAudio);
         if (!audioResponse || !audioResponse._id) {
-          throw new Error('Error al subir el audio');
+          throw new Error('Error uploading the audio');
         }
 
         const track = await createTrack({
@@ -51,13 +51,13 @@ export const UploadForm = () => {
 
         });
         if (!track) {
-          throw new Error('Error al crear la track');
+          throw new Error('Error creating the track');
         }
 
         await queryClient.invalidateQueries({ queryKey: ['tracks'] });
         setAdminView(null);
       } catch (error) {
-        console.error("Error subiendo la canción:", error);
+        console.error("Error uploading the track:", error);
       }
     }
   });
@@ -93,12 +93,12 @@ export const UploadForm = () => {
 
         <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
           <Upload size={20} />
-          Subir Nueva Canción
+          Upload new track
         </h2>
 
         <form onSubmit={formik.handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm text-zinc-400 mb-1">Nombre de la canción *</label>
+            <label className="block text-sm text-zinc-400 mb-1">Song name *</label>
             <input
               name="name"
               required
@@ -109,7 +109,7 @@ export const UploadForm = () => {
           </div>
 
           <div>
-            <label className="block text-sm text-zinc-400 mb-1">Nombre del artista *</label>
+            <label className="block text-sm text-zinc-400 mb-1">Artist name *</label>
             <input
               name="artist.name"
               required
@@ -120,7 +120,7 @@ export const UploadForm = () => {
           </div>
 
           <div>
-            <label className="block text-sm text-zinc-400 mb-1">Álbum *</label>
+            <label className="block text-sm text-zinc-400 mb-1">Album *</label>
             <input
               name="album"
               required
@@ -131,7 +131,7 @@ export const UploadForm = () => {
           </div>
 
           <div>
-            <label className="block text-sm text-zinc-400 mb-1">URL de la portada *</label>
+            <label className="block text-sm text-zinc-400 mb-1">Cover URL *</label>
             <div className="flex items-center gap-4">
               {formik.values.cover && (
                 <img
@@ -154,7 +154,7 @@ export const UploadForm = () => {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm text-zinc-400 mb-1">Nickname Artista *</label>
+              <label className="block text-sm text-zinc-400 mb-1">Artist nickname *</label>
               <input
                 name="artist.nickname"
                 required
@@ -165,7 +165,7 @@ export const UploadForm = () => {
             </div>
 
             <div>
-              <label className="block text-sm text-zinc-400 mb-1">Nacionalidad *</label>
+              <label className="block text-sm text-zinc-400 mb-1">Nationality *</label>
               <input
                 name="artist.nationality"
                 required
@@ -178,7 +178,7 @@ export const UploadForm = () => {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm text-zinc-400 mb-1">Duración Inicio (seg) *</label>
+              <label className="block text-sm text-zinc-400 mb-1">Start time (seg) *</label>
               <input
                 type="number"
                 name="duration.start"
@@ -191,7 +191,7 @@ export const UploadForm = () => {
             </div>
 
             <div>
-              <label className="block text-sm text-zinc-400 mb-1">Duración Fin (seg) *</label>
+              <label className="block text-sm text-zinc-400 mb-1">End time (seg) *</label>
               <input
                 type="number"
                 name="duration.end"
@@ -205,7 +205,7 @@ export const UploadForm = () => {
           </div>
 
           <div>
-            <label className="block text-sm text-zinc-400 mb-1">Archivo de Audio (MP3/WAV) *</label>
+            <label className="block text-sm text-zinc-400 mb-1">Audio file (MP3/WAV) *</label>
             <div className="flex flex-col gap-2">
               {audioPreview && (
                 <audio controls className="w-full">
@@ -230,7 +230,7 @@ export const UploadForm = () => {
             className="w-full bg-green-500 p-2 rounded-lg hover:bg-green-600 transition-colors flex items-center justify-center gap-2 mt-4"
           >
             <Upload size={18} />
-            Subir Canción
+            Upload track
           </button>
         </form>
       </div>

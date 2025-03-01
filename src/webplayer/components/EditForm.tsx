@@ -5,6 +5,7 @@ import { Tracks } from "../../entities/domain/tracks";
 import { useEffect } from "react";
 import { useQueryClient } from '@tanstack/react-query';
 import { updateTrack } from "../../actions/webplayer/tracks";
+import { TrackResponse } from '../../interfaces/tracks.interface';
 
 export const EditForm = () => {
   const queryClient = useQueryClient(); 
@@ -39,12 +40,12 @@ export const EditForm = () => {
       try {
         const res = await updateTrack(values);
         if (!res) {
-          throw new Error('Error al actualizar la track');
+          throw new Error('Error updating the track');
         }
         await queryClient.invalidateQueries({ queryKey: ['tracks'] });
         setAdminView(null);
       } catch (error) {
-        console.error("Error al actualizar la canción:", error);
+        console.error("Error updating the track:", error);
       }
     },
   });
@@ -76,7 +77,7 @@ export const EditForm = () => {
             onClick={() => setAdminView(null)}
           />
           
-          <h2 className="text-xl font-bold mb-4">Seleccionar canción a editar</h2>
+          <h2 className="text-xl font-bold mb-4">Select a track to edit</h2>
           
           <select
             className="w-full p-2 bg-zinc-800 rounded-lg text-white mb-4"
@@ -85,7 +86,7 @@ export const EditForm = () => {
               if (track) setSelectedTrackForEdit(track);
             }}
           >
-            <option value="">Selecciona una canción</option>
+            <option value="">Select a track to edit</option>
             {tracks.map(track => (
               <option key={track._id} value={track._id}>
                 {track.name} - {track.artist.name}
@@ -109,11 +110,11 @@ export const EditForm = () => {
           }}
         />
         
-        <h2 className="text-xl font-bold mb-4">Editar canción</h2>
+        <h2 className="text-xl font-bold mb-4">Edit track</h2>
         
         <form onSubmit={formik.handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm text-zinc-400 mb-1">Nombre:</label>
+            <label className="block text-sm text-zinc-400 mb-1">Name:</label>
             <input
               name="name"
               value={formik.values.name}
@@ -123,7 +124,7 @@ export const EditForm = () => {
           </div>
 
           <div>
-            <label className="block text-sm text-zinc-400 mb-1">Álbum:</label>
+            <label className="block text-sm text-zinc-400 mb-1">Album:</label>
             <input
               name="album"
               value={formik.values.album}
@@ -133,7 +134,7 @@ export const EditForm = () => {
           </div>
 
           <div>
-            <label className="block text-sm text-zinc-400 mb-1">Artista:</label>
+            <label className="block text-sm text-zinc-400 mb-1">Artist:</label>
             <input
               name="artist.name"
               value={formik.values.artist.name}
@@ -144,7 +145,7 @@ export const EditForm = () => {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm text-zinc-400 mb-1">Inicio (segundos):</label>
+              <label className="block text-sm text-zinc-400 mb-1">Start (seconds):</label>
               <input
                 type="number"
                 name="duration.start"
@@ -155,7 +156,7 @@ export const EditForm = () => {
             </div>
 
             <div>
-              <label className="block text-sm text-zinc-400 mb-1">Fin (segundos):</label>
+              <label className="block text-sm text-zinc-400 mb-1">End (seconds):</label>
               <input
                 type="number"
                 name="duration.end"
@@ -167,7 +168,7 @@ export const EditForm = () => {
           </div>
 
           <div>
-            <label className="block text-sm text-zinc-400 mb-1">Portada actual:</label>
+            <label className="block text-sm text-zinc-400 mb-1">Cover:</label>
             <img
               src={formik.values.cover}
               alt="Cover"
@@ -193,7 +194,7 @@ export const EditForm = () => {
           </div>
 
           <div>
-            <label className="block text-sm text-zinc-400 mb-1">Audio actual:</label>
+            <label className="block text-sm text-zinc-400 mb-1">Current audio:</label>
             <audio controls className="w-full mb-2">
               <source src={formik.values.audio.url} type="audio/mpeg" />
             </audio>
@@ -217,7 +218,7 @@ export const EditForm = () => {
             className="w-full bg-green-500 p-2 rounded-lg hover:bg-green-600 transition-colors flex items-center justify-center gap-2"
           >
             <Save size={18} />
-            Guardar Cambios
+            Save changes
           </button>
         </form>
       </div>
