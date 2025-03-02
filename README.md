@@ -193,9 +193,62 @@ carloscarrete-backend-tracks/
 - `npm test`: Run unit tests.  
 
 ---
+# Screenshots de la App
 
-### Screenshots
-![Texto alternativo](https://res.cloudinary.com/dv6ut2tik/image/upload/v1740867741/ac0gzfvej8zbhpguaiml.png)
+### Register Page
+<p align="center">
+  <img src="https://res.cloudinary.com/dv6ut2tik/image/upload/v1740867741/ac0gzfvej8zbhpguaiml.png" alt="Register Page" />
+</p>
+
+---
+
+### Login Page
+<p align="center">
+  <img src="https://res.cloudinary.com/dv6ut2tik/image/upload/v1740868670/ehokxunmb4hderc6ie6v.png" alt="Login Page" />
+</p>
+
+---
+
+### Player Page
+<p align="center">
+  <img src="https://res.cloudinary.com/dv6ut2tik/image/upload/v1740874779/havhosbq7lu9whl2hs4k.png" alt="Player Page" />
+</p>
+
+---
+
+### Search Component
+<p align="center">
+  <img src="https://res.cloudinary.com/dv6ut2tik/image/upload/v1740874960/pt7vgngwdkp6n30iakch.png" alt="Search Component" />
+</p>
+
+---
+
+### Panel Admin Component
+<p align="center">
+  <img src="https://res.cloudinary.com/dv6ut2tik/image/upload/v1740875553/doib1kynrwkbp9n6mi5p.png" alt="Panel Admin Component" />
+</p>
+
+---
+
+### Panel Admin Component Upload
+<p align="center">
+  <img src="https://res.cloudinary.com/dv6ut2tik/image/upload/v1740875553/ceuqwwpsbsvioigsu89d.png" alt="Panel Admin Component Upload" />
+</p>
+
+---
+
+### Panel Admin Component Edit
+<p align="center">
+  <img src="https://res.cloudinary.com/dv6ut2tik/image/upload/v1740875553/pos5fggbjrs6q6ttedbt.png" alt="Panel Admin Component Edit" />
+</p>
+
+---
+
+### Panel Admin Component Delete
+<p align="center">
+  <img src="https://res.cloudinary.com/dv6ut2tik/image/upload/v1740875554/lyaducfuqc6colcf2lrh.png" alt="Panel Admin Component Delete" />
+</p>
+
 
 
 ### Contribution  
