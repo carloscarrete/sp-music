@@ -20,13 +20,19 @@ export const LoginPage = () => {
 
     const { login } = useAuthStore();
 
-    const onLogin = async (email: string, password: string) => {
+   const onLogin = async (email: string, password: string) => {
         const res = await login(email, password);
         if (!res) {
             console.log('An error occurred during login');
         }
     }
 
+    const handleTestUser = async () => {
+        const res = await login('test@user.com', '12345678');
+        if (!res) {
+            console.log('Error al acceder como usuario de prueba');
+        }
+    };
 
     return (
         <Formik<RegisterValues>
@@ -93,6 +99,12 @@ export const LoginPage = () => {
                                 </Link>
                             </p>
                         </div>
+                        <button
+                    onClick={handleTestUser}
+                    className="bg-blue-500 text-white font-bold rounded-lg p-3 mt-3 hover:bg-blue-400 transition-colors"
+                >
+                    Acceder como invitado
+                </button>
                     </div>
                 </div>
             )}
