@@ -61,7 +61,7 @@ Before running the project, ensure you have the following installed:
 1. Clone the repository:  
    ```bash
    git clone https://github.com/your-username/carloscarrete-sp-music.git  
-   cd carloscarrete-sp-music  
+   cd sp-music  
    ```  
 
 2. Install dependencies:  
